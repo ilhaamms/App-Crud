@@ -1,8 +1,11 @@
 <?php
 
-    require_once 'Console/Table.php';
+    require_once 'Console/Table.php'; //ini supaya bisa menggunakan function clearScreen
+    require_once __DIR__ . "/AddKaryawan.php"; //karna masih 1 folder yang sama jadi langsung aja /nama file.php
 
     function showKaryawan(){
+
+        clearScreen();
 
         global $dataKaryawan;
         
@@ -10,23 +13,38 @@
         echo "Jumlah Data Karyawan : " . count($dataKaryawan)                  . PHP_EOL;
         echo "===============================================================" . PHP_EOL;
         
-        $tabelKaryawan = new Console_Table();
+        $tabelKaryawan = new Console_Table(); //membuat tabel tampilan karyawan
+        // ini header tabelnya
         $tabelKaryawan ->setHeaders(array("No", "Nama", "Jenis Kelamin", "Nik", "Status", "Alamat", "No Hp", "Email"));
         
+        // ini looping untuk memasukan data array data karyawan kedalam baris sebuah tabel
         foreach($dataKaryawan as $key => $data){
             $tabelKaryawan ->addRow($dataKaryawan[$key]);
         }
 
-        echo $tabelKaryawan->getTable() . PHP_EOL;
-        // echo var_dump($dataKaryawan) . PHP_EOL;
-        // if(var_dump($dataKaryawan) == "array(1) {
-        //     [0]=>
-        //     array(0) {
-        //     }
-        //   }"){
-        // }else{
-        //     echo "Belum ada data karyawan yang diinput" . PHP_EOL;
-        // }
+        // kalau data karyawannya belum diinput atau kosong
+        if(count($dataKaryawan) == 0){
+            echo "\nBelum ada data karyawan yang diinput" . PHP_EOL;
+            $question = readline("Input Data Karyawan (Y/N ?) : ");
+
+            if($question == "y" || $question == "Y"){
+                addKaryawan();
+            }else{
+                appCrudKaryawan();
+            }
+        // kalau data karyawannya sudah ada yang diinput
+        }else{
+            echo $tabelKaryawan->getTable() . PHP_EOL;
+
+            echo "\n";
+            $question = readline("Input Data Karyawan (Y/N ?) : ");
+
+            if($question == "y" || $question == "Y"){
+                addKaryawan();
+            }else{
+                appCrudKaryawan();
+            }
+        }
 
     }
 

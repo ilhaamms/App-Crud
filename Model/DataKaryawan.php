@@ -1,8 +1,6 @@
 <?php
 
-    $dataKaryawan = array(
-        // array(1, "Ucup", "L", 123, "Training", "Bekasi", 123456789, "ucup@gmail.com")
-        array()
-    );
+    $dataKaryawan = array(); // ini untuk data karyawan yang fiks disimpan
+    $temporaryDataKaryawan = array(); // ini untuk data karyawan yang sementara, jadi mau disave datanya atau engga
 
 ?>
