@@ -3,12 +3,13 @@
     require_once 'Console/Table.php'; //ini supaya bisa menggunakan function clearScreen
     require_once __DIR__ . "/AddKaryawan.php"; //karna masih 1 folder yang sama jadi langsung aja /nama file.php
 
+    // function showKaryawan
     function showKaryawan(){
 
         clearScreen();
 
         global $dataKaryawan;
-        
+
         echo "Lihat Data Karyawan"                                             . PHP_EOL;
         echo "Jumlah Data Karyawan : " . count($dataKaryawan)                  . PHP_EOL;
         echo "===============================================================" . PHP_EOL;
@@ -17,8 +18,8 @@
         // ini header tabelnya
         $tabelKaryawan ->setHeaders(array("No", "Nama", "Jenis Kelamin", "Nik", "Status", "Alamat", "No Hp", "Email"));
         
-        // ini looping untuk memasukan data array data karyawan kedalam baris sebuah tabel
-        foreach($dataKaryawan as $key => $data){
+        // ini looping untuk memasukan array data karyawan kedalam baris sebuah tabel    
+        foreach($dataKaryawan as $key => $karyawan){
             $tabelKaryawan ->addRow($dataKaryawan[$key]);
         }
 
@@ -34,6 +35,7 @@
             }
         // kalau data karyawannya sudah ada yang diinput
         }else{
+
             echo $tabelKaryawan->getTable() . PHP_EOL;
 
             echo "\n";
