@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * function mencari data karyawan
+     * function mencari data karyawan, first
      */
     function searchKaryawan(){
 
