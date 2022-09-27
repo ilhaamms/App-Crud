@@ -1,17 +1,5 @@
 <?php
 
-
-    // function untuk cek pas jumlah data karyawan yang di input angka atau bukan
-    function cekData(string $jumlahKaryawan): bool{
-        global $cekInputData;
-
-        foreach($cekInputData as $data){
-            if(strtoupper($jumlahKaryawan) == strtoupper($data)){
-                return true;
-            }
-        }
-    }
-
     // function add karyawan
     function addKaryawan(){
         
@@ -26,25 +14,28 @@
         echo "===============================================================" . PHP_EOL;
         $jumlahKaryawan = readline("Jumlah data karyawan yang akan diinput (X untuk cancel) : ");
         
-        $result = cekData($jumlahKaryawan);
-        if($result){
-            echo "\nHarap Masukan Angka" . PHP_EOL;
-            $question = readline("Coba Input Data Karyawan Lagi (Y/N ? ) : ");
-                if($question == "Y" || $question == "y"){
-                    addKaryawan();
-                }else{
-                    appCrudKaryawan();
-                }
-        }elseif($jumlahKaryawan == "x" || $jumlahKaryawan == "X"){
-                
+        // jika batal input data karyawan
+        if($jumlahKaryawan == "x" || $jumlahKaryawan == "X"){
             echo "\nInput Data Dibatalkan" . PHP_EOL;
-            
+                
             $question = readline("Kembali Kemenu (Y/N ? ) : ");
-            if($question == "Y" || $question == "y"){
-                appCrudKaryawan();
+                if($question == "Y" || $question == "y"){
+                    appCrudKaryawan();
                 }else{
                     addKaryawan();
                 }
+        }else{
+            // dicek tipe data yang diinput kalau bukan x dan tipe datanya tidak sama dengan int/ 0
+            $inputKaryawan = (int)$jumlahKaryawan; // hasil dari konversi tipe data wajib disimpan dalam variabel baru
+            if($inputKaryawan == 0){
+                echo "\nHarap Masukan Angka" . PHP_EOL;
+                
+                $question = readline("Coba Input Data Karyawan Lagi (Y/N ? ) : ");
+                    if($question == "Y" || $question == "y"){
+                        addKaryawan();
+                    }else{
+                        appCrudKaryawan();
+                    }
             }else{
                 $index = count($dataKaryawan) + 1; //ini supaya data index yang ditambahkan sesuai dengan jumlah data karyawannya
                 for($data = 1; $data <= $jumlahKaryawan; $data++){
@@ -57,8 +48,8 @@
                     $addresKaryawan = readline("Alamat              : ");
                     $hpKaryawan     = readline("No Hp               : ");
                     $emailKaryawan  = readline("Email               : ");
-
-                    // nah pada line 31 maksudnya adalah index ini yang line 32, 33, 35, 36
+        
+                    // nah pada line ini maksudnya adalah index ini yang diline 55, 56, 58, 59
                     // pake function ucwords supaya setiap kata awalnya menjadi huruf kapital pada saat data dimasukan
                     $tempDataKaryawan[$index][] = $index; //+ 1; 
                     $tempDataKaryawan[$index][] = ucwords($nameKaryawan);
@@ -71,42 +62,41 @@
                     
                     $index++;
                 }
-
+        
                 echo "\nData Berhasil Diinput" . PHP_EOL;
                 $question = readline("Save Data (Y/N ?) : ");
-                
+                        
                 // kalau data disave
                 if($question == "y" || $question == "Y"){
                     // ini loop untuk memindahkan semua data array Temporary karyawan kedalam array data karyawan
                     // index pada array tempDataKaryawan dimulai dari 1
-                    // maka pada line 52 count($dataKaryawan) + 1 karena supaya index dataKaryawan juga dimulai dari 1 bukan 0 
+                    // maka pada line 75 count($dataKaryawan) + 1 karena supaya index dataKaryawan juga dimulai dari 1 bukan 0 
                     foreach($tempDataKaryawan as $keyTemp => $data){
                         $dataKaryawan[count($dataKaryawan) + 1] = $tempDataKaryawan[$keyTemp];
                     }
-
+        
                     // kemudian ini loop untuk menghapus semua data array yang ada di temporary karyawan 
                     foreach($tempDataKaryawan as $keyTemp => $data){
                         unset($tempDataKaryawan[$keyTemp]);
                     }
-                    
+                        
                     echo "\nData Saved" . PHP_EOL;
-
+    
                     $question = readline("Input Data Karyawan Lagi (Y/N ? ) : ");
-                    if($question == "Y" || $question == "y"){
-                        addKaryawan();
-                    }else{
-                        appCrudKaryawan();
-                    }
+                        if($question == "Y" || $question == "y"){
+                            addKaryawan();
+                        }else{
+                            appCrudKaryawan();
+                        }
                 // kalau data engga di save
                 }else{
-
+    
                     // kemudian ini loop untuk menghapus semua data array yang ada di temporary karyawan
                     foreach($tempDataKaryawan as $keyTemp => $data){
                         unset($tempDataKaryawan[$keyTemp]);
                     }
-
+        
                     echo "\nData Not Saved" . PHP_EOL;
-
                     $question = readline("Input Data Karyawan Lagi (Y/N ? ) : ");
                     if($question == "Y" || $question == "y"){
                         addKaryawan();
@@ -114,8 +104,10 @@
                         appCrudKaryawan();
                     }
                 }
+
             }
 
+        }
     }
 
 ?>

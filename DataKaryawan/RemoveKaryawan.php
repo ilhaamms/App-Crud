@@ -47,7 +47,7 @@ function removeKaryawan(){
             
             
             if($question == "y" || $question == "Y"){
-                // $indexnya = $key data yang ditemukan, kemudian di looping sebanyak data array $dataKaryawan
+                $indexnya = $key; //data yang ditemukan, kemudian di looping sebanyak data array $dataKaryawan
                 for($index = $key; $index < sizeof($dataKaryawan); $index++){
                     $dataKaryawan[$index + 1][0] = $index;
                     $dataKaryawan[$index]        = $dataKaryawan[$index + 1];

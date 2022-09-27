@@ -43,7 +43,9 @@
             echo "\nExit..." . PHP_EOL;
             sleep(1.5); // untuk jeda beberapa detik
         }else{
-            echo "[!] Pilihan Tidak Ada" . PHP_EOL;
+            echo "\n[!] Pilihan Tidak Ada";
+            sleep(1.5);
+            appCrudKaryawan();
         }
     }
 
