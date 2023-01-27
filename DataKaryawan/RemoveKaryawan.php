@@ -43,7 +43,7 @@ function removeKaryawan(){
             echo "Email         : " . $dataKaryawan[$key][7] . PHP_EOL;
     
             echo "\n";
-            $question = readline("Hapus Data Karyawan ? : ");
+            $question = readline("Hapus Data Karyawan (Y/N) ? : ");
             
             
             if($question == "y" || $question == "Y"){
