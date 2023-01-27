@@ -12,6 +12,10 @@ Ini adalah aplikasi crud data karyawan yang berbasiskan cli, didalam aplikasi in
 
 ![This is a alt text.](asset/input.png "This is a sample image.")
 
+### Show All Data :
+
+![This is a alt text.](asset/show.png "This is a sample image.")
+
 ### Search :
 
 ![This is a alt text.](asset/search.png "This is a sample image.")
