@@ -1,6 +1,6 @@
 # Apps Crud Data Karyawan (CLI)
 
-Ini adalah aplikasi crud data karyawan yang berbasiskan cli, didalam aplikasi ini kita bisa melakukan seperti input data, read data, ubah data, dan delete data
+Ini adalah aplikasi crud data karyawan yang berbasiskan cli dan belum terintegrasi dengan database, didalam aplikasi ini kita bisa melakukan seperti input data, read data, ubah data, dan delete data
 
 # Preview
 
