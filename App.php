@@ -3,11 +3,11 @@
     // ini manggil file difolder lain wajib seperti ini, langsung aja /nama folder/nama file php
     // langsung dipanggil seperti ini karena file app.php file tempatnya sama dengan folder yang lain
     require_once __DIR__ . "/Model/DataKaryawan.php";
-    require_once __DIR__ . "/DataKaryawan/ShowKaryawan.php";
-    require_once __DIR__ . "/DataKaryawan/AddKaryawan.php";
-    require_once __DIR__ . "/DataKaryawan/SearchKaryawan.php";
-    require_once __DIR__ . "/DataKaryawan/ChangeKaryawan.php";
-    require_once __DIR__ . "/DataKaryawan/RemoveKaryawan.php";
+    require_once __DIR__ . "/logic/ShowKaryawan.php";
+    require_once __DIR__ . "/logic/AddKaryawan.php";
+    require_once __DIR__ . "/logic/SearchKaryawan.php";
+    require_once __DIR__ . "/logic/ChangeKaryawan.php";
+    require_once __DIR__ . "/logic/RemoveKaryawan.php";
 
     // clear screen in cli
     function clearScreen(){
